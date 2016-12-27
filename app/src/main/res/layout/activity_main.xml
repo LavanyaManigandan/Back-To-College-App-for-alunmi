@@ -8,10 +8,44 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.happy.myapplication.MainActivity"
-    android:theme="@style/Theme.AppCompat">
+    android:theme="@style/AppTheme"
+    android:background="@color/accent_material_dark"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:weightSum="1">
+
+    <EditText
+        android:layout_width="351dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="@string/userid"
+         />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_weight="0.03"
+        android:text="@string/pwd"
+        android:visibility="visible" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+        android:background="@color/accent_material_dark" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Create an account"
+        android:id="@+id/textView2"
+        android:layout_weight="0.03"
+        />
 </LinearLayout>
