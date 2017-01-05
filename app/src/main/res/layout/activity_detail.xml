@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:id="@+id/button4"
-        android:background="#e21033"
+        android:background="@color/material_deep_teal_500"
         android:layout_gravity="center_horizontal" />
     </android.support.design.widget.TextInputLayout>
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:text="Notification"
         android:id="@+id/button5"
-        android:background="#e21033"
+        android:background="@color/material_deep_teal_500"
         android:layout_gravity="center_horizontal" />
 
     </android.support.design.widget.TextInputLayout>
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:text="Discuss Forum"
         android:id="@+id/button6"
-        android:background="#e21033"
+        android:background="@color/material_deep_teal_500"
         android:layout_gravity="center_horizontal" />
 </android.support.design.widget.TextInputLayout>
 
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Post"
         android:id="@+id/button7"
-        android:background="#e21033"
+        android:background="@color/material_deep_teal_500"
         android:layout_gravity="center_horizontal" />
 </android.support.design.widget.TextInputLayout>
 </LinearLayout>

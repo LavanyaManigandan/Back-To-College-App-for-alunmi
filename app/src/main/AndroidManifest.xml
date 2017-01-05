@@ -15,6 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".EveMag" />
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".discuss"></activity>
     </application>
 
 </manifest>
