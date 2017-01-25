@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/e1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/e2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/e3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/e4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText7"
+                    android:id="@+id/e5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText8"
+                    android:id="@+id/e6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/e7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText10"
+                    android:id="@+id/e8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText11"
+                    android:id="@+id/e9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editText12"
+                    android:id="@+id/e10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/b1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
