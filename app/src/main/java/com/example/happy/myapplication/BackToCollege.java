@@ -1,5 +1,6 @@
 package com.example.happy.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,25 +16,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Main2Activity extends AppCompatActivity
+public class BackToCollege extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_back_to_college);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        displaySelectedScreen(R.id.nav_camera);
     }
 
     @Override
@@ -49,7 +48,7 @@ public class Main2Activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
+        getMenuInflater().inflate(R.menu.activity_back_to_college_drawer, menu);
         return true;
     }
 
@@ -72,8 +71,8 @@ public class Main2Activity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-             displaySelectedScreen(item.getItemId());
-                return true;
+        displaySelectedScreen(item.getItemId());
+        return true;
     }
     private void displaySelectedScreen(int itemId) {
 
@@ -83,32 +82,28 @@ public class Main2Activity extends AppCompatActivity
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_camera:
-                fragment = new ProfileFragment();
+                fragment = new stuprofile_fragment();
                 break;
-            case R.id.nav_gallery:
-                fragment=new post_fragment();
-                break;
-            case R.id.nav_slideshow:
-                fragment=new notif_fragment();
-                break;
-            case R.id.nav_manage:
-                fragment=new Diss_fragment();
-                break;
-            case R.id.nav_share:
-                fragment=new google_fragment();
-                break;
-
-
+//            case R.id.nav_process:
+//                fragment = new Process();
+//                break;
+//            case R.id.nav_ss:
+//                fragment = new Finished();
+//                break;
+//            case R.id.nav_man:
+//                fragment = new Areahistory();
+//                break;
+//            case R.id.nav_signout:
+//                Intent i = new Intent(Combinedofficial.this,MainActivity.class);
+//                startActivity(i);
+//                break;
         }
-
-        //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
+            ft.replace(R.id.content_back_to_college, fragment);
             ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-    }
-}
+    }}
