@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.happy.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +20,21 @@
         </activity>
         <activity android:name=".AccountActivity" />
         <activity android:name=".EveMag" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".discuss"></activity>
+        <activity android:name=".forgot" />
+        <activity android:name=".evtlogin" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
+        <activity
+            android:name=".BackToCollege"
+            android:label="@string/title_activity_back_to_college"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
