@@ -1,7 +1,7 @@
 package com.example.happy.myapplication;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.StrictMode;
@@ -10,13 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -33,20 +26,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.happy.myapplication.R.id.b1;
-
 public class Editstuprofile extends AppCompatActivity {
     HttpClient httpclient;
     HttpPost httppost;
     ResponseHandler<String> response;
     List<NameValuePair> nameValuePairs;
     List<String> allNames;
-    EditText ed1, ed2, ed3, ed4, ed5, ed6, ed7, ed8, ed9, ed10,ed11,ed12;
+    EditText ed1, ed2, ed3, ed4, ed5, ed6, ed7, ed8, ed9, ed10, ed11, ed12;
     String name, father, dob, add, Area, City, phone, email, batch, dept, userid, password;
     SharedPreferences prefs;
     String id = "";
     String returnedstring;
-    Button update;
+    Button update, map,post;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -64,26 +55,6 @@ public class Editstuprofile extends AppCompatActivity {
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
-        update = (Button) findViewById(R.id.update);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = ed1.getText().toString();
-                father=ed2.getText().toString();
-                dob=ed3.getText().toString();
-                add =ed4.getText().toString();
-                Area =ed5.getText().toString();
-                City =ed6.getText().toString();
-                phone =ed7.getText().toString();
-                email =ed8.getText().toString();
-                batch =ed9.getText().toString();
-                dept =ed10.getText().toString();
-                userid =ed11.getText().toString();
-                password=ed12.getText().toString();
-                new UpdateInformation().execute();
-            }
-        });
         ed1 = (EditText) findViewById(R.id.e1);
         ed2 = (EditText) findViewById(R.id.e2);
         ed3 = (EditText) findViewById(R.id.e3);
@@ -95,13 +66,50 @@ public class Editstuprofile extends AppCompatActivity {
         ed9 = (EditText) findViewById(R.id.e9);
         ed10 = (EditText) findViewById(R.id.e10);
         ed11 = (EditText) findViewById(R.id.e11);
-        ed11 = (EditText) findViewById(R.id.e12);
+        ed12 = (EditText) findViewById(R.id.e12);
+        map = (Button) findViewById(R.id.map);
+        post = (Button) findViewById(R.id.post);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Editstuprofile.this, LocationActivity.class);
+
+                startActivity(i);
+            }
+        });
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Editstuprofile.this, MainHome.class);
+              //  i.putExtra("sendbatch",batch);
+                startActivity(i);
+            }
+        });
+        update = (Button) findViewById(R.id.update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = ed1.getText().toString();
+                father = ed2.getText().toString();
+                dob = ed3.getText().toString();
+                add = ed4.getText().toString();
+                Area = ed5.getText().toString();
+                City = ed6.getText().toString();
+                phone = ed7.getText().toString();
+                email = ed8.getText().toString();
+                batch = ed9.getText().toString();
+                dept = ed10.getText().toString();
+                userid = ed11.getText().toString();
+                password = ed12.getText().toString();
+                new UpdateInformation().execute();
+            }
+        });
 
 
         new ExampleAsync().execute();
 
     }
-
 
 
     public class ExampleAsync extends AsyncTask<Void, String, String> {
@@ -163,6 +171,7 @@ public class Editstuprofile extends AppCompatActivity {
             updateData();
         }
     }
+
     public void updateData() {
         ed1.setText(allNames.get(0).toString());
         ed2.setText(allNames.get(1).toString());
@@ -179,7 +188,7 @@ public class Editstuprofile extends AppCompatActivity {
 
     }
 
-    public class UpdateInformation extends AsyncTask<Void,String,String>{
+    public class UpdateInformation extends AsyncTask<Void, String, String> {
 
         @Override
         protected String doInBackground(Void... params) {
@@ -191,6 +200,9 @@ public class Editstuprofile extends AppCompatActivity {
         public void onClickData() {
 
             try {
+                SharedPreferences prefs = getSharedPreferences("userid", MODE_PRIVATE);
+                String mUserId = prefs.getString("userid", null);
+                nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("name", name));
                 nameValuePairs.add(new BasicNameValuePair("father", father));
                 nameValuePairs.add(new BasicNameValuePair("dob", dob));
@@ -203,15 +215,18 @@ public class Editstuprofile extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("batch", batch));
                 nameValuePairs.add(new BasicNameValuePair("userid", userid));
                 nameValuePairs.add(new BasicNameValuePair("pass", password));
-                nameValuePairs.add(new BasicNameValuePair("userid", id));
-                httppost = new HttpPost("http://10.0.2.2/stu.php");
+                nameValuePairs.add(new BasicNameValuePair("status", "0"));
+                nameValuePairs.add(new BasicNameValuePair("id", mUserId));
+
+                httpclient = new DefaultHttpClient();
+                response = new BasicResponseHandler();
+                httppost = new HttpPost("http://10.0.2.2/Editstuprofile.php");
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 returnedstring = httpclient.execute(httppost, response);
 
+                System.out.println("Prints:" + returnedstring);
 
-
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
